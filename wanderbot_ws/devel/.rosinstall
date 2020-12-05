@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/jihoon/Programming-Robots-with-ROS/wanderbot_ws/devel/setup.sh
