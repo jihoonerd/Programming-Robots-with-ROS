@@ -6,8 +6,8 @@ from sensor_msgs.msg import LaserScan
 
 def scan_callback(msg):
     global g_range_ahead
-    g_range_ahead = min(msg.ranges)
-    print(g_range_ahead)
+    g_range_ahead = msg.ranges[0]
+    print("range ahead: {}".format(g_range_ahead))
 
 g_range_ahead = 1
 scan_sub = rospy.Subscriber('scan', LaserScan, scan_callback)
@@ -25,11 +25,11 @@ while not rospy.is_shutdown():
     else:
         if rospy.Time.now() > state_change_time:
             driving_forward = True
-            state_change_time = rospy.Time.now() + rospy.Duration(30)
+            state_change_time = rospy.Time.now() + rospy.Duration(10)
     twist = Twist()
     if driving_forward:
-        twist.linear.x = 1
+        twist.linear.x = 0.2
     else:
-        twist.angular.z = 1
+        twist.angular.z = 0.5
     cmd_vel_pub.publish(twist)
     rate.sleep()
