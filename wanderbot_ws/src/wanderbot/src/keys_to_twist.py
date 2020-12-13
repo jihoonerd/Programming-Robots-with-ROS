@@ -27,4 +27,4 @@ if __name__ == '__main__':
     g_last_twist = Twist() # initializes to zero
     while not rospy.is_shutdown():
         twist_pub.publish(g_last_twist)
-        rospy.spin()
+        rate.sleep()
