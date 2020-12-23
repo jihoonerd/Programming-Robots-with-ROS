@@ -2,6 +2,8 @@
 
 ## Environment
 
+* ROS: noetic
+* Python 3.8
 
 ## Simulation
 
